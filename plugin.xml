@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="access.com.mvc" version="0.0.1" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+  <name>mvc</name>
+  <js-module name="mvc" src="www/mvc.js">
+    <clobbers target="mvc" />
+  </js-module>
+  <platform name="android">
+    <config-file parent="/*" target="res/xml/config.xml">
+      <feature name="mvc"><param name="android-package" value="access.com.mvc.mvc" /></feature>
+    </config-file>
+    <config-file parent="/*" target="AndroidManifest.xml" />
+    <source-file src="src/android/mvc.java" target-dir="src/access/com/mvc/mvc" />
+  </platform>
+  <platform name="ios">
+    <config-file parent="/*" target="config.xml">
+      <feature name="mvc"><param name="ios-package" value="mvc" /></feature>
+      </config-file><source-file src="src/ios/mvc.m" />
+  </platform>
+</plugin>
