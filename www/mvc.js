@@ -1,10 +1,16 @@
 var exec = require('cordova/exec');
 
 module.exports = {
-  coolMethod: function(arg0, success, error) {
-    //exec(success, error, "mvc", "coolMethod", [arg0]);
+  fetchMission: function(success, error) {
+    exec(success, error, "mvc", "fetchMission", []);
   },
-  echo: function(str) {
-    return str;
+  fetchVision: function(success, error) {
+    exec(success, error, "mvc", "fetchVision", []);
+  },
+  fetchCoreValues: function(success, error) {
+    exec(success, error, "mvc", "fetchCoreValues", []);
+  },
+  version: function() {
+    return "0.0.2";
   }
 };
