@@ -1,45 +1,42 @@
-
 exports.defineAutoTests = function() {
   describe('mvc object existance check', function() {
 
-    it("access.com.mvc", function () {
-      expect( access.com.mvc).toBeDefined();
+    it("mvc", function () {
+      expect(mvc).toBeDefined();
     });
 
-    it("access.com.mvc.coolMethod", function() {
-      expect( access.com.mvc.coolMethod ).toBeDefined();
+    it("mvc.fetchMission", function() {
+      expect(mvc.fetchMission).toBeDefined();
     });
   });
 
-  describe('coolMethod call test', function() {
-
+  describe('fetchMission call test', function() {
     var value;
     var callbacks;
 
     beforeEach(function(done) {
       callbacks = {
-        win: function(arg){
+        success: function(arg){
           value = arg;
           done();
         },
-        fail: function(err){
-          console.log("callbacks.fail");
+        error: function(err){
           done();
         }
       };
 
-      spyOn(callbacks, 'win').and.callThrough();
-      spyOn(callbacks, 'fail').and.callThrough();
-      
-      access.com.mvc.coolMethod("test", callbacks.win, callbacks.fail);
+      spyOn(callbacks, 'success').and.callThrough();
+      spyOn(callbacks, 'error').and.callThrough();
+      mvc.fetchMission(callbacks.success, callbacks.error);
     });
 
     it("to have been called", function() {
-      expect(callbacks.win).toHaveBeenCalled();
+      expect(callbacks.success).toHaveBeenCalled();
+      expect(callbacks.error).not.toHaveBeenCalled();
     });
 
     it("check return value", function() {
-      expect(value).toBe("test");
+      expect(value).toBe("我々は、ソフトウェアを人々の身近な存在にし、世界に新しい日常を提供し続けます。");
     });
 
   });
